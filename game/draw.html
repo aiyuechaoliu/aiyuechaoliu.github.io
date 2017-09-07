@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>小球运动</title>
+		<link rel="icon" href="img/1207058.png" type="image/x-icon"/>
+		<style type="text/css">
+			canvas{border: 13px solid cornflowerblue;margin-left: 250px;background: beige;}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="850px" height="400px"></canvas>
+		
+		<script type="text/javascript">
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			var m = 30;
+			var n = 30
+			var r = 30;
+			
+			var a = 0;
+			var b = 0;
+			
+            var speedX = 1;
+            var speedY = 1;
+            
+			setInterval(function () {
+				ctx.clearRect(0,0,canvas.width,canvas.height)
+				ctx.beginPath();
+			    ctx.arc(m,n,r,0,2*Math.PI,false);
+				ctx.fillStyle = "red";
+				ctx.closePath();
+				ctx.fill();
+				
+                if (n>canvas.height-r||n<0+r) {
+                	speedY= -speedY;
+                } 
+                if (m>canvas.width-r||m<0+r) {
+                	speedX= -speedX;
+                }
+                m+=speedX;
+                n+=speedY;
+
+
+                clearInterval;
+			},1)
+		</script>
+		
+		<br /><a href="javascript:history.back()">Go Back</a>
+	</body>
+</html>

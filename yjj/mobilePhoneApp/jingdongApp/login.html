@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="css/con_foot.css"/>
+		<link rel="stylesheet/less" href="css/login.less" />
+		<script type="text/javascript" src="js/less.min.js" ></script>
+		<style>
+			@media only screen and (min-width:500px) {
+				#new-max_box{width: 500px;}
+			}
+			@media only screen and (max-width:500px) {
+				#new-max_box{width: 100%;}
+			}
+		</style>	
+	</head>
+	<body>
+		<div id="new-max_box">
+			<header>
+				<a href="javascript:history.back()" class="back"><img src="img/back.png" /></a>
+				<span>登录</span>
+				<a href="#" class="menu"><img src="img/menu.png" /></a>
+			</header>
+			<section>
+				<form action="info.html" method="get" onsubmit="return checkForm()">
+					<div style="border-bottom: none;">
+						<span>用户名:</span>
+						<input type="text" placeholder="用户名/手机/电子邮件"  name="username" id="username"/>
+					</div>
+					<div>
+						<span>密码：</span>
+						<input type="password" placeholder="密码"  name="password" id="password"/>
+					</div>
+					<p><input type="checkbox" name="" id=""/>&nbsp;记住本次登录</p>
+					<input type="submit" value="立即登录 "/>
+					<span class="forget"><a href="">忘记密码</a><a href="register.html">免费注册</a></span>
+				</form>
+			</section>
+			<div id="footer">
+				<p>使用合作账号登录</p>
+				<p>
+					<a href=""><img src="img/qq.png" /></a>
+					<a href=""><img src="img/weibo.png" /></a>
+				</p>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/login.js" ></script>
+	</body>
+</html>

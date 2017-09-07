@@ -29,11 +29,18 @@ body,html{
     }
     .header .big .logo .smallLogo{
     	width:50px;height:50px;
-    	float:left;margin: 5px 10px;
+    	float:left;
+    	margin: 5px 10px;
+    	overflow: hidden;
     	line-height:60px;border-radius: 50%;background: #fff;
     	background: url("../img/logo.png");
     	background-size: 50px 50px;
     }
+    /*.header .big .logo .smallLogo img{
+    	display: block;
+    	height: 50px;
+    	width: 50px;
+    }*/
     .header .big ul li{
     	height:60px;
     	padding:0 22px;
@@ -316,7 +323,7 @@ body,html{
     .templatemo_mainimg{display:none;}
     .templatemo_mainimgaaa{
     	width:263px;height:305px;
-    	background:#ccc url(../img/run.gif);
+    	background:#ccc url(../img/snake.png);
     	display:block;
     }
     .templatemo_mainimgbbb{
@@ -395,7 +402,6 @@ body,html{
 		margin:-90px auto auto -300px;
 		height: 180px;
 		width: 600px;
-		/*text-align:center;*/
 		overflow:hidden;
 	}
     .swiper-slide6 p{

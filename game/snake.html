@@ -1,0 +1,250 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>贪吃蛇游戏</title>
+		<style type="text/css">
+			body{background: #222;}
+			table,td{
+				border: 1px solid #000;
+				border-collapse: collapse;
+			}
+			td{
+				box-shadow: 0px 0px 15px #000;
+			}
+			table{
+				width: 600px;
+				height: 500px;
+				margin: 0 auto;
+			}
+			p{color: #fff;font-weight: bold;text-align: center;line-height: 50px;}
+			.color1{background: #336600;}
+			.color2{background: #669933;}
+			.color3{background: #339933;}
+			.cover{background: #f00;}
+			.food{background: #66FF00;}
+		</style>
+		<script type="text/javascript">
+			window.alert = function(str){
+				var bgDiv = document.createElement("div");
+					bgDiv.id = "bgDiv";
+					bgDiv.style.position = "absolute";
+					bgDiv.style.left = "0px";
+					bgDiv.style.top = "0px";
+					bgDiv.style.width = "100%";
+				var h = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+					bgDiv.style.height = h+"px";
+					try{
+						bgDiv.style.background = "rgba(0,0,0,.5)";
+					}catch(e){
+						bgDiv.style.background = "#000";
+						bgDiv.style.filter = "alpha(opacity=50)";   //IE8
+					}
+					bgDiv.style.zIndex = "299";
+				document.body.appendChild(bgDiv);
+				var centerDiv = document.createElement("div");
+					centerDiv.id = "centerDiv";
+					centerDiv.style.position = "absolute";
+					centerDiv.style.left = "50%";
+					centerDiv.style.top = "50%";
+					centerDiv.style.marginLeft = "-225px";
+					centerDiv.style.marginTop = "-75px";
+					centerDiv.style.width = "450px";
+					centerDiv.style.height = "150px";
+					centerDiv.style.background = "#fff";
+					centerDiv.style.zIndex = "300";
+				var strHtml = "<ul style='list-style:none;margin:0;padding:0;width:100%;'>";
+					strHtml += "<li style='background:#dd828d;text-align:left;padding-left:20px;font-size:14px;font-weight:blod;height:25px;line-height:25px;border:1px solid #f9cade;'>自定义提示</li>"
+					strHtml += "<li style='height:80px;line-height:80px;text-align:center;'>"+str+"</li>";
+					strHtml += "<li style='text-align:center'><button id='okBtn' onclick='ok()'>确定</button> <button onclick='javascript:location.reload()'>重新开始</button></li>";
+					strHtml += "</ul>";
+					centerDiv.innerHTML = strHtml;
+				document.body.appendChild(centerDiv);
+				this.ok = function(){
+					bgDiv.parentNode.removeChild(bgDiv);
+					centerDiv.parentNode.removeChild(centerDiv);
+				}
+				document.getElementById("okBtn").focus();
+				
+			}
+		</script>
+		<script type="text/javascript">
+			function $(str){
+			var reg = /^(\s+)|(\s+)$/g;
+			var str = str.replace(reg,"");
+			if(str.substring(0,1)==="#"){
+				return document.getElementById(str.substring(1));
+			}else if(str.substring(0,1)==="."){
+				if(document.getElementsByClassName){
+					return document.getElementsByClassName(str.substring(1));
+				}else{
+					var arr = [];
+					var all = document.getElementsByTagName("*");
+					for(var i=0;i<all.length;i++){
+						if(all[i].className === str.substring(1)){
+							arr[arr.length] = all[i];
+						}
+					}
+					return arr;
+				}
+			}else{
+				return document.getElementsByTagName(str);
+			}
+		}
+		</script>
+		<script type="text/javascript">
+			
+			var direction;	//方向
+			var snake = [];	//蛇的身体
+			var food;
+			var flag;		//定义计时器的标示。使setinterval只执行一次
+			var timer;
+			
+			window.onload = function(){
+				init();
+				creatSnake();
+				creatFood();
+				start();
+			}
+			
+//			创建表格
+			function init(){
+//				产生随机数
+				getColor = function(){
+					return Math.floor(Math.random()*3+1);
+				}
+//				创建表格
+				for(var i=0;i<25;i++){
+					var tr = document.createElement("tr");
+					for(var j=0;j<30;j++){
+						var td = document.createElement("td");
+						td.className = "color"+getColor();
+						td.id = i+"-"+j;
+						tr.appendChild(td);
+					}
+					$("table")[0].appendChild(tr);
+				}
+			}
+			
+//			创建蛇头
+			function creatSnake(){
+				var snakeID = getRandom();  //   1-2
+				$("#"+snakeID).className += " cover";
+				snake.push(snakeID);
+			}
+
+//			创建食物
+			function creatFood(){
+				var snakeID = getRandom();  //   1-2
+				food = snakeID;
+				$("#"+snakeID).className += " food";
+			}
+
+//			产生随机ID
+			function getRandom(){
+				var x = Math.floor(Math.random()*25);
+				var y = Math.floor(Math.random()*30);
+				return x+"-"+y;
+			}
+
+//			蛇的方向
+			function start(){
+				document.onkeydown = function(event){
+					var e = event || window.event;
+					switch (e.keyCode){
+						case 37: if(direction===39){return}; direction = 37;break;
+						case 38: if(direction===40){return}; direction = 38;break;
+						case 39: if(direction===37){return}; direction = 39;break;
+						case 40: if(direction===38){return}; direction = 40;
+					}
+					step();
+//					计时器只执行一次（蛇行走的方法）
+					if(flag===false){return;}
+					timer = setInterval(step,300);
+					flag = false;
+				}
+			}
+
+//			蛇行走的方法
+			function step(){
+//				当前的位置  从数组中获取第0位  比如"3-3"
+				var headX = parseInt(snake[0].split("-")[0]);
+				var headY = parseInt(snake[0].split("-")[1]);
+//				下一步的位置
+				switch(direction){
+					case 37:headY -= 1;break;
+					case 38:headX -= 1;break;
+					case 39:headY += 1;break;
+					case 40:headX += 1;break;
+				}
+				
+				//产生新的头部
+				var newHead = headX+"-"+headY;
+				
+//				判断碰到边界、自己、GAMEOVER
+				if(headX<0||headX>=25||headY<0||headY>=30||$("#"+newHead).className.indexOf("cover")>-1){
+					clearInterval(timer);
+					document.onkeydown = null;
+					alert("游戏结束");
+					return;
+				}
+				
+				snake.unshift(newHead);			//添加到数组的第一位
+				var last = snake.pop();			//取出数组的最后一位
+				$("#"+newHead).className += " cover";
+				$("#"+last).className = $("#"+last).className.replace(" cover","");
+				
+//				吃食物
+				if(snake[0]===food){
+					$("#"+food).className = $("#"+food).className.replace(" food"," cover");
+					snake.push(food);		//追加到数组的最后一个
+					creatFood();			//创造新的食物
+				}
+			}
+			
+		</script>
+	</head>
+	<body>
+		<table></table>
+		<p>↑↓←→开始并控制方向</p>
+	</body>
+</html>
+
+<!--思路：
+1、创建表格 ———— 300X300
+2、创建蛇头
+3、创建食物
+4、身体存储在数组中
+5、撞墙、撞自己gameover。-->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+<!--2016-11-25-->
+<!--毕琳琳，感恩节?又叫火鸡节，1941年美国国会11月第4个星期四定义。1847年加拿大也定义时间。-->
+<!--埃及希腊都有自己的……-->
+
+<!--……-->
+<!--耿彦波，原先是大同市市长，被称为耿拆拆。县委书记———县长———修缮王家大院，几A级景区。
+从离石————榆次（常家大院）————太原（常委）————2008年大同（景点、人文、环境）————太原（拆的被打断腿）。-->
+
+	
+	
+	
+	

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>注册</title>
+		<link rel="stylesheet" type="text/css" href="css/con_foot.css"/>
+		<link rel="stylesheet/less" href="css/register.less" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css"/>
+		<style>
+			@media only screen and (min-width:500px) {
+				#new-max_box{width: 500px;}
+				footer{width: 500px;left: 50%;margin-left: -250px;}
+			}
+			@media only screen and (max-width:500px) {
+				#new-max_box{width: 100%;}
+				#search{width: 100%;}
+			}
+		</style>
+		<script type="text/javascript" src="js/jquery-1.8.3.min.js" ></script>
+		<script type="text/javascript" src="js/less.min.js" ></script>
+	</head>
+	<body>
+		<div id="new-max_box">
+			<header>
+				<a href="javascript:history.back()" class="back"><img src="img/back.png" /></a>
+				<span>注册</span>
+				<a href="#" class="menu"><img src="img/menu.png" /></a>
+			</header>
+			<section>
+				<form action="login.html" method="get" onsubmit="return checkForm()">
+					<div style="border-bottom: none;">
+						<span>用户名:</span>
+						<input type="text" placeholder="请输入用户名"  name="username" id="username" />
+					</div>
+					<div>
+						<span>密码：</span>
+						<input type="password" placeholder="请输入6-20位登录密码"  name="password" id="password"/>
+						<i class="icon-eye-open icon-eye-close"></i>
+					</div>
+					<div>
+						<span>确认密码：</span>
+						<input type="password" placeholder="请重新输入密码"  name="repassword" id="repassword"/>
+					</div>
+					<div style="border-bottom: none;">
+						<span>验证码:</span>
+						<input type="text" placeholder="请输入验证码"  name="check" id="check"/>
+						<b onclick="change()"></b>
+					</div>
+					<b style="font-weight: normal;margin: 10px;display: block;height: 20px;color: red;margin-left: 30px;"></b>
+					<p><input type="checkbox" name="" id="" checked/>&nbsp;我已看过并接受《用户协议》</p>
+					<input type="submit" value="注册"/>
+				</form>
+			</section>
+		</div>
+		<script type="text/javascript" src="js/register.js" ></script>
+	</body>
+</html>

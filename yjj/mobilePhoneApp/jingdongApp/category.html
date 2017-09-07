@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no">
+		<title>JD分类</title>
+		<link rel="stylesheet" href="css/con_foot.css" />
+		<link rel="stylesheet/less" type="text/css" href="css/category.less"/>
+		<script type="text/javascript" src="js/less.min.js" ></script>
+		<style>
+			@media only screen and (min-width:500px) {
+				#new-max_box{width: 500px;}
+				footer{width: 500px;left: 50%;margin-left: -250px;}
+				#search{width: 500px;left: 50%;margin-left: -250px;}
+				#sidebar{left: 50%;margin-left: -250px;}
+			}
+			@media only screen and (max-width:500px) {
+				#new-max_box{width: 100%;}
+				footer{width: 100%;}
+				#search{width: 100%;}
+				#sidebar{left: 0;}
+			}
+		</style>
+	</head>
+	<body>
+		<div id="new-max_box">
+			<section id="search">
+				<span></span>
+				<div>
+					<input type="text" name="name" placeholder="厨卫超级品类日 满3件即享88折" autofocus="autofocus">
+					<button></button>
+				</div>
+			</section>	
+			<aside>
+				<div id="sidebar">
+					<ul>
+						<li class="active">热门推荐</li>
+						<li >潮流女装</li>
+						<li >品牌男装</li>
+						<li >个护化妆</li>
+						<li >家用电器</li>
+						<li >电脑办公</li>
+						<li >手机数码</li>
+						<li >母婴童装</li>
+						<li >图书</li>
+						<li >家居家纺</li>
+						<li >厨房用品</li>
+						<li >家具建材</li>
+						<li >食品生鲜</li>
+						<li >酒水饮料</li>
+						<li >运动户外</li>
+						<li >鞋靴箱包</li>
+						<li >奢品礼品</li>
+						<li >钟表珠宝</li>
+						<li >玩具乐器</li>
+						<li >内衣配饰</li>
+						<li >汽车用品</li>
+						<li >音像制品</li>
+						<li >医药保健</li>
+						<li >计生情趣</li>
+						<li >全球购</li>
+						<li >京东金融</li>
+						<li >生活旅行</li>
+						<li >宠物农资</li>
+					</ul>
+				</div>
+			</aside>
+			
+			<section id="category_main">
+				<div class="category_content active">
+					<div class="category_banner"><img src="img/categroy/58bd21b3N3ccccfa6.jpg"/></div>
+					<div class="category_product">
+						<p>专场推荐</p>
+						<ul>
+							<li><a><img src="img/categroy/re1.jpg" /></a><p>3.7超级品类日</p></li>
+							<li><a><img src="img/categroy/re2.jpg" /></a><p>女人节尚新季</p></li>
+							<li><a><img src="img/categroy/re3.jpg" /></a><p>跨品类2件5折</p></li>
+						</ul>
+					</div>
+					
+					<div class="category_product">
+						<p>热门分类</p>
+						<ul>
+							<li><a><img src="img/categroy/fenlei1.png" /></a><p>手机</p></li>
+							<li><a><img src="img/categroy/fenlei2.jpg" /></a><p>笔记本</p></li>
+							<li><a><img src="img/categroy/fenlei3.jpg" /></a><p>空调</p></li>
+							<li><a><img src="img/categroy/fenlei4.jpg" /></a><p>收纳用品</p></li>
+							<li><a><img src="img/categroy/fenlei5.jpg" /></a><p>炒锅</p></li>
+							<li><a><img src="img/categroy/fenlei6.jpg" /></a><p>啤酒</p></li>
+							<li><a><img src="img/categroy/fenlei7.jpg" /></a><p>火车票</p></li>
+						</ul>
+					</div>
+				</div>
+				<div class="category_content">潮流女装</div>
+				<div class="category_content">品牌男装</div>
+				<div class="category_content">个护化妆</div>
+				<div class="category_content">家用电器</div>
+				<div class="category_content">电脑办公</div>
+				<div class="category_content">手机数码</div>
+				<div class="category_content">母婴童装</div>
+				<div class="category_content">图书</div>
+				<div class="category_content">家居家纺</div>
+				<div class="category_content">厨房用品</div>
+				<div class="category_content">家具建材</div>
+				<div class="category_content">食品生鲜</div>
+				<div class="category_content">酒水饮料</div>
+				<div class="category_content">运动户外</div>
+				<div class="category_content">鞋靴箱包</div>
+				<div class="category_content">奢品礼品</div>
+				<div class="category_content">钟表珠宝</div>
+				<div class="category_content">玩具乐器</div>
+				<div class="category_content">内衣配饰</div>
+				<div class="category_content">汽车用品</div>
+				<div class="category_content">音像制品</div>
+				<div class="category_content">医药保健</div>
+				<div class="category_content">计生情趣</div>
+				<div class="category_content">全球购</div>
+				<div class="category_content">京东金融</div>
+				<div class="category_content">生活旅行</div>
+				<div class="category_content">宠物农资</div>
+			</section>		
+		</div>
+		
+		
+		
+		
+		<footer>
+			<a href="index.html" >首页</a>
+			<a href="category.html" class="active">分类</a>
+			<a href="shopp_car.html">购物车</a>
+			<a onclick="checkcookie()">用户中心</a>
+		</footer>
+		<script type="text/javascript" src="js/category.js" ></script>
+	</body>
+</html>
